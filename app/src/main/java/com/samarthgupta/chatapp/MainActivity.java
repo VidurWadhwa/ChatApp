@@ -18,12 +18,12 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
     TextView tv1;
-    EditText et1;
+    EditText et1,et2,et3;
     Button bt1;
+
 
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference ref = firebaseDatabase.getReference();
-    DatabaseReference ref1=firebaseDatabase.getReference("Message");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,21 +32,31 @@ public class MainActivity extends AppCompatActivity {
 
         tv1=(TextView)findViewById(R.id.textView3);
         et1=(EditText)findViewById(R.id.editText);
+        et2=(EditText)findViewById(R.id.editText2);
+        et3=(EditText)findViewById(R.id.editText3);
         bt1=(Button)findViewById(R.id.button);
+
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String username = et2.getText().toString();
                 String t= et1.getText().toString();
                 FirebaseClass mes = new FirebaseClass();
                 mes.setMessage(t);
-                ref.child("Message").setValue(mes);
-                Log.i("TAG","IN");
+                ref.child(username).setValue(mes);
                 Toast.makeText(getApplicationContext(),"Message Sent",Toast.LENGTH_LONG).show();
+
 
             }
         });
 
+
+        //Here is the chull
+        String rec = et3.getText().toString();
+        Log.i("TEG",rec);
+        DatabaseReference ref1 = firebaseDatabase.getReference();
+        ref1.child("B").getRef();
         ref1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -59,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
             }
         });
 
