@@ -5,4 +5,17 @@ package com.samarthgupta.chatapp;
  */
 
 public class FirebaseClass {
+    private String message;
+
+    public void FirebaseClass() {
+
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

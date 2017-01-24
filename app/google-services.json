@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "479912993266",
+    "firebase_url": "https://chatapp-fcb39.firebaseio.com",
+    "project_id": "chatapp-fcb39",
+    "storage_bucket": "chatapp-fcb39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479912993266:android:797b993635c883fe",
+        "android_client_info": {
+          "package_name": "com.samarthgupta.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479912993266-bhio0rinc6k6sj84luolet2g05qs48te.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.samarthgupta.chatapp",
+            "certificate_hash": "32BD86EF74D04B8BEA32B2D7895063F4E6367558"
+          }
+        },
+        {
+          "client_id": "479912993266-krm7tt73i0kmf5epl518j23fh80v28h0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVje4TfhieoxIssB5atwKk-vRh2JERAJc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479912993266-krm7tt73i0kmf5epl518j23fh80v28h0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
