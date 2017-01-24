@@ -2,6 +2,7 @@ package com.samarthgupta.chatapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseClass mes = new FirebaseClass();
                 mes.setMessage(t);
                 ref.child("Message").setValue(mes);
+                Log.i("TAG","IN");
                 Toast.makeText(getApplicationContext(),"Message Sent",Toast.LENGTH_LONG).show();
 
             }
