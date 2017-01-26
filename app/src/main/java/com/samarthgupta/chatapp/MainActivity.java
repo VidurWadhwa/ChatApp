@@ -1,5 +1,6 @@
 package com.samarthgupta.chatapp;
 
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,10 +21,11 @@ public class MainActivity extends AppCompatActivity {
     TextView tv1;
     EditText et1,et2,et3;
     Button bt1;
-
+    String sender,receiver,message;
 
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference ref = firebaseDatabase.getReference();
+    DatabaseReference ref1 = firebaseDatabase.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,30 +42,32 @@ public class MainActivity extends AppCompatActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String username = et2.getText().toString();
-                String t= et1.getText().toString();
-                FirebaseClass mes = new FirebaseClass();
-                mes.setMessage(t);
-                ref.child(username).setValue(mes);
+
+                message= et1.getText().toString();
+                sender = et2.getText().toString();
+                receiver = et3.getText().toString();
+                FirebaseClass obj1 = new FirebaseClass(sender,receiver,message);
+                ref.child("A").setValue(obj1);
                 Toast.makeText(getApplicationContext(),"Message Sent",Toast.LENGTH_LONG).show();
-
-
             }
         });
 
 
-        //Here is the chull
-        String rec = et3.getText().toString();
-        Log.i("TEG",rec);
-        DatabaseReference ref1 = firebaseDatabase.getReference();
-        ref1.child("B").getRef();
         ref1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                FirebaseClass firebaseClass;
-                firebaseClass = dataSnapshot.getValue(FirebaseClass.class);
-                String string = firebaseClass.getMessage();
-                tv1.setText(string);
+
+                message= et1.getText().toString();
+                sender = et2.getText().toString();
+                receiver = et3.getText().toString();
+
+                for(DataSnapshot snap : dataSnapshot.getChildren()){
+                FirebaseClass obj2 = snap.getValue(FirebaseClass.class);
+                if(obj2.getSender()==receiver){
+                    Log.i("HEY", obj2.getSender());
+                }
+
+                 }
 
             }
 
@@ -72,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
             }
         });
+
+
 
 
     }

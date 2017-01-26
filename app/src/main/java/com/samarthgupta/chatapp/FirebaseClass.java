@@ -6,16 +6,31 @@ package com.samarthgupta.chatapp;
 
 public class FirebaseClass {
     private String message;
+    private String sender;
+    private String reciever;
 
-    public void FirebaseClass() {
+    FirebaseClass(){
 
     }
+
+    public FirebaseClass(String sender, String reciever, String message){
+        this.sender=sender;
+        this.reciever=reciever;
+        this.message=message;
+    }
+
+    public String getReciever() {
+        return reciever;
+    }
+
+
+    public String getSender() {
+        return sender;
+    }
+
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
